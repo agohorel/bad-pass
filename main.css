@@ -1,0 +1,13 @@
+body {
+	background-color: black;
+	font-family: monospace;
+}
+
+#display {
+	text-align: center;
+	margin-top: 0px;
+	padding-top: 25%;
+	color: white;
+	font-size: 24px;
+	filter: blur(1px);
+}
