@@ -1,4 +1,5 @@
 var words = ['foxtrot', 'fwolharben', 'fixate'];
+var randomChars = ['!', '@', '#', '$', '%', '&', '*', '+', '=', '/', '<', '>', '~', '*', '-', '_', '^', '.', '?', '(', ')', '[', ']', '{', '}'];
 var p = document.getElementById('display');
 var selectedRandomChar, index = 0, i = 0; 
 
@@ -9,7 +10,7 @@ String.prototype.replaceAt = function(index, char) {
 };
 
 setInterval(function(){
-	selectedRandomChar = randomChar[Math.floor(Math.random() * randomChar.length)];
+	selectedRandomChar = randomChars[Math.floor(Math.random() * randomChars.length)];
 	p.innerText = words[i].replaceAt(index, selectedRandomChar);
 	index++;
 	if (index >= words[i].length) {
