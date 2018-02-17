@@ -1,5 +1,4 @@
 var words = ['foxtrot', 'fwolharben', 'fixate'];
-var randomChar = ['!', '@', '#', '$', '%', '&', '*', '+', '=', '/', '<', '>'];
 var p = document.getElementById('display');
 var selectedRandomChar, index = 0, i = 0; 
 
