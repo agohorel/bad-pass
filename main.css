@@ -3,11 +3,29 @@ body {
 	font-family: monospace;
 }
 
-#display {
-	text-align: center;
-	margin-top: 0px;
-	padding-top: 25%;
-	color: white;
+#container {
+	height: 50px;
+	position: relative;
+	margin: 0;
+}
+
+.display {
+	position: absolute;
+	height: 50px;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	color: #f92b02;
 	font-size: 24px;
-	filter: blur(1px);
+	filter: blur(2px);
+}
+
+#overlay {
+	position: absolute;
+	height: 50px;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	color: #f92b02;
+	filter: blur(0px);
 }
