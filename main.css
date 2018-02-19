@@ -15,9 +15,10 @@ body {
 	z-index: 1;
 	top: 0;
 	left: 0;
-	color: #f92b02;
+	color: #e24700;
 	font-size: 24px;
 	filter: blur(2px);
+	padding-top: 20px;
 }
 
 #overlay {
@@ -26,6 +27,14 @@ body {
 	z-index: 2;
 	top: 0;
 	left: 0;
-	color: #f92b02;
 	filter: blur(0px);
+}
+
+#title {
+	font-size: 24px;
+	color: white;
+	top: 0;
+	left: 0;
+	filter: blur(1px);
+	transition: .1s;
 }

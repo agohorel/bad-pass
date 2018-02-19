@@ -3,6 +3,9 @@ var words = ["123456","password","12345678","qwerty","123456789","12345","1234",
 var randomChars = ['!', '@', '#', '$', '%', '&', '*', '+', '=', '/', '<', '>', '~', '*', '-', '_', '^', '.', '?', '(', ')', '[', ']', '{', '}'];
 var p = document.querySelectorAll('.display');
 var selectedRandomChar, index = 0, i = 0; 
+var cursor = document.getElementById('blink');
+var cursorstyle = window.getComputedStyle(cursor);
+var cursorCol;
 
 String.prototype.replaceAt = function(index, char) {
 	var a = this.split("");
@@ -25,5 +28,19 @@ setInterval(function(){
 
 	if (i >= words.length) {
 		i = 0;
-	}	
+	}
 }, 75);
+
+setInterval(function(){
+	cursorCol = cursorstyle.getPropertyValue('color');
+
+	if (cursorCol === 'rgb(255, 255, 255)'){
+		cursor.style.color = 'black';
+	} else {
+		cursor.style.color = 'white';
+	}
+
+}, 300);
+
+
+
