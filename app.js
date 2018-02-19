@@ -26,4 +26,4 @@ setInterval(function(){
 	if (i >= words.length) {
 		i = 0;
 	}	
-}, 100);
+}, 75);
