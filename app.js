@@ -5,9 +5,12 @@ var words = [
 var randomChars = ['!', '@', '#', '$', '%', '&', '*', '+', '=', '/', '<', '>', '~', '*', '-', '_', '^', '.', '?', '(', ')', '[', ']', '{', '}'];
 var p = document.querySelectorAll('.display');
 var selectedRandomChar, index = 0, i = 0, complexityFactor, complexityScore;
+// approximate GTX 1080 MD5 hashrate
+var hashrate = 43750000000;
 var cursor = document.getElementById('blink');
 var cursorstyle = window.getComputedStyle(cursor);
 var cursorCol;
+var crackTimeDisplay = document.getElementById('cracktime');
 
 String.prototype.replaceAt = function(index, char) {
 	var a = this.split("");
@@ -23,7 +26,10 @@ setInterval(function(){
 	} 
 
 	analyzeComplexity(words[i]);
-	console.log(complexityFactor, complexityScore);
+	timeToCrack(complexityScore, hashrate);
+	console.log("complexityFactor: " + complexityFactor + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " hours");
+
+	crackTimeDisplay.innerText = crackTime + " hours";
 
 	index++;
 	if (index >= words[i].length) {
@@ -65,11 +71,16 @@ function analyzeComplexity(word){
 		complexityFactor += 10;
 	}
 
-	if (word.match(/[!@#$%^&*()_+-=`~<>,.?/:;"'{[}\]\|\\]/g)){
-		complexityFactor += 32;
-	}
+	// this is bugged
+	// if (word.match(/[!@#$%^&*()_+-=`~<>,.?/:;"'{[}\]\|\\]/g)){
+	// 	complexityFactor += 32;
+	// }
 
 	complexityScore = Math.pow(word.length, complexityFactor);
 
 	return complexityScore;
+}
+
+function timeToCrack(keyspace, hashrate){
+	return crackTime = (keyspace / hashrate) / 3600;
 }
