@@ -78,7 +78,7 @@ function analyzeComplexity(word){
 	// 	complexityFactor += 32;
 	// }
 
-	complexityScore = Math.pow(word.length, complexityFactor);
+	complexityScore = Math.pow(complexityFactor, word.length);
 
 	return complexityScore;
 }
