@@ -28,10 +28,10 @@ setInterval(function(){
 	if (index === 0){
 		analyzeComplexity(words[i]);
 		timeToCrack(complexityScore, hashrate);
-		console.log("complexityFactor: " + complexityFactor + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " hours");
+		console.log("complexityFactor: " + complexityFactor + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " seconds");
 	}
 
-	crackTimeDisplay.innerText = crackTime + " hours";
+	crackTimeDisplay.innerText = crackTime + " seconds";
 
 	index++;
 	if (index >= words[i].length) {
@@ -84,5 +84,5 @@ function analyzeComplexity(word){
 }
 
 function timeToCrack(keyspace, hashrate){
-	return crackTime = (keyspace / hashrate) / 3600;
+	return crackTime = (keyspace / hashrate);
 }
