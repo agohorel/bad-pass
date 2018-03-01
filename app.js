@@ -25,9 +25,11 @@ setInterval(function(){
 		p[j].innerText = "> " + words[i].replaceAt(index, selectedRandomChar);
 	} 
 
-	analyzeComplexity(words[i]);
-	timeToCrack(complexityScore, hashrate);
-	console.log("complexityFactor: " + complexityFactor + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " hours");
+	if (index === 0){
+		analyzeComplexity(words[i]);
+		timeToCrack(complexityScore, hashrate);
+		console.log("complexityFactor: " + complexityFactor + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " hours");
+	}
 
 	crackTimeDisplay.innerText = crackTime + " hours";
 
