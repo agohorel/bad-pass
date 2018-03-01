@@ -73,10 +73,9 @@ function analyzeComplexity(word){
 		complexityFactor += 10;
 	}
 
-	// this is bugged
-	// if (word.match(/[!@#$%^&*()_+-=`~<>,.?/:;"'{[}\]\|\\]/g)){
-	// 	complexityFactor += 32;
-	// }
+	if (word.match(/\W/g)){
+		complexityFactor += 32;
+	}
 
 	complexityScore = Math.pow(complexityFactor, word.length);
 
