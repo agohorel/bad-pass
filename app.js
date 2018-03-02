@@ -4,7 +4,7 @@ var words = [
 
 var randomChars = ['!', '@', '#', '$', '%', '&', '*', '+', '=', '/', '<', '>', '~', '*', '-', '_', '^', '.', '?', '(', ')', '[', ']', '{', '}'];
 var p = document.querySelectorAll('.display');
-var selectedRandomChar, index = 0, i = 0, complexityFactor, complexityScore;
+var selectedRandomChar, index = 0, i = 0, keyspace, complexityScore;
 // approximate GTX 1080 MD5 hashrate
 var hashrate = 43750000000;
 var cursor = document.getElementById('blink');
@@ -28,13 +28,13 @@ setInterval(function(){
 	if (index === 0){
 		analyzeComplexity(words[i]);
 		timeToCrack(complexityScore, hashrate);
-		console.log("complexityFactor: " + complexityFactor + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " seconds");
+		console.log("keyspace: " + keyspace + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " seconds");
 	}
 
 	crackTimeDisplay.innerText = crackTime + " seconds";
 
 	index++;
-	if (index >= words[i].length) {
+	// hacky wait/reset
 		index = 0;
 		i++;
 	}
@@ -58,30 +58,30 @@ setInterval(function(){
 
 
 function analyzeComplexity(word){
-	complexityFactor = 0;
+	keyspace = 0;
 	console.log(word);
 
 	if (word.match(/[a-z]/g)){
-		complexityFactor += 26;
+		keyspace += 26;
 	}
 
 	if (word.match(/[A-Z]/g)){
-		complexityFactor += 26;
+		keyspace += 26;
 	}
 
 	if (word.match(/\d/g)){
-		complexityFactor += 10;
+		keyspace += 10;
 	}
 
 	if (word.match(/\W/g)){
-		complexityFactor += 32;
+		keyspace += 32;
 	}
 
-	complexityScore = Math.pow(complexityFactor, word.length);
+	complexityScore = Math.pow(keyspace, word.length);
 
 	return complexityScore;
 }
 
 function timeToCrack(keyspace, hashrate){
-	return crackTime = (keyspace / hashrate);
+	return crackTime = keyspace / hashrate;
 }
