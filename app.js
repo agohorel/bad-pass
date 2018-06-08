@@ -35,6 +35,7 @@ setInterval(function(){
 
 	index++;
 	// hacky wait/reset
+	if (index >= words[i].length){
 		index = 0;
 		i++;
 	}
