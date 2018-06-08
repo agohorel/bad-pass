@@ -4,8 +4,6 @@ var selectedRandomChar, index = 0, i = 0, keyspace, complexityScore;
 // approximate GTX 1080 MD5 hashrate
 var hashrate = 43750000000;
 var cursor = document.getElementById('blink');
-var cursorstyle = window.getComputedStyle(cursor);
-var cursorCol;
 var crackTimeDisplay = document.getElementById('crack-time');
 
 String.prototype.replaceAt = function(index, char) {
@@ -28,8 +26,8 @@ setInterval(function(){
 	}
 
 	crackTimeDisplay.innerText = crackTime + " seconds";
-
 	index++;
+	
 	// hacky wait/reset
 	if (index >= words[i].length){
 		index = 0;
@@ -42,15 +40,9 @@ setInterval(function(){
 
 }, 75);
 
+// blink the "cursor"
 setInterval(function(){
-	cursorCol = cursorstyle.getPropertyValue('color');
-
-	if (cursorCol === 'rgb(255, 255, 255)'){
-		cursor.style.color = 'black';
-	} else {
-		cursor.style.color = 'white';
-	}
-
+	cursor.classList.toggle("hide-cursor");
 }, 300);
 
 

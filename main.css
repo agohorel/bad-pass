@@ -72,3 +72,7 @@ body {
 #crack-time {
 	color: #fff;
 }
+
+.hide-cursor {
+	opacity: 0;
+}
