@@ -1,47 +1,65 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	background-color: black;
 	font-family: monospace;
 }
 
-#container {
-	height: 50px;
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#screen {
 	position: relative;
-	margin: 0;
-}
-
-.display {
-	position: absolute;
-	height: 50px;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	color: #078c18;
-	font-size: 24px;
-	filter: blur(2px);
-	padding-top: 20px;
-}
-
-#overlay {
-	position: absolute;
-	height: 50px;
-	z-index: 2;
-	top: 0;
-	left: 0;
-	filter: blur(0px);
+	width: 50vw;
+	height: 50vh;
+	border: 2px solid #444;
+	border-radius: 5px;
+	margin-top: 25vh;
+	padding: 20px;
 }
 
 #title {
+	position: relative;
 	font-size: 24px;
-	color: white;
-	top: 0;
-	left: 0;
+	color: #fff;
 	filter: blur(1px);
-	transition: .1s;
 }
 
-#crackHeader {
-	font-size: 16px;
-	color: grey;
+.password {
 	position: absolute;
-	top: 75px;
+	height: 50px;
+	z-index: 1;
+	top: 50px;
+	left: 20px;
+	color: #07c41f;
+	font-size: 24px;
+	filter: blur(3px);
+	padding-top: 20px;
+}
+
+#password-overlay {
+	color: #078c18;
+	position: absolute;
+	height: 50px;
+	z-index: 2;
+	top: 50px;
+	left: 20px;
+	filter: blur(0px);
+}
+
+#crack-header {
+	font-size: 16px;
+	color: #777;
+	padding-top: 70px;
+}
+
+#crack-time {
+	color: #fff;
 }

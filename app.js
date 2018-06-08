@@ -1,12 +1,12 @@
 var randomChars = ['!', '@', '#', '$', '%', '&', '*', '+', '=', '/', '<', '>', '~', '*', '-', '_', '^', '.', '?', '(', ')', '[', ']', '{', '}'];
-var p = document.querySelectorAll('.display');
+var p = document.querySelectorAll('.password');
 var selectedRandomChar, index = 0, i = 0, keyspace, complexityScore;
 // approximate GTX 1080 MD5 hashrate
 var hashrate = 43750000000;
 var cursor = document.getElementById('blink');
 var cursorstyle = window.getComputedStyle(cursor);
 var cursorCol;
-var crackTimeDisplay = document.getElementById('cracktime');
+var crackTimeDisplay = document.getElementById('crack-time');
 
 String.prototype.replaceAt = function(index, char) {
 	var a = this.split("");
