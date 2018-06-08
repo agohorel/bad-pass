@@ -1,41 +1,42 @@
 var randomChars = ['!', '@', '#', '$', '%', '&', '*', '+', '=', '/', '<', '>', '~', '*', '-', '_', '^', '.', '?', '(', ')', '[', ']', '{', '}'];
-var p = document.querySelectorAll('.password');
-var selectedRandomChar, index = 0, i = 0, keyspace, complexityScore;
+var password = document.querySelectorAll('.password');
+var selectedRandomChar, count = 0, index = 0, keyspace, complexityScore;
 // approximate GTX 1080 MD5 hashrate
 var hashrate = 43750000000;
 var cursor = document.getElementById('blink');
 var crackTimeDisplay = document.getElementById('crack-time');
 
-String.prototype.replaceAt = function(index, char) {
+String.prototype.replaceAt = function(count, char) {
 	var a = this.split("");
-	a[index] = char;
+	a[count] = char;
 	return a.join("");
 };
 
 setInterval(function(){
+	// pick a random $ymbol
 	selectedRandomChar = randomChars[Math.floor(Math.random() * randomChars.length)];
-	
-	for (var j = 0; j < p.length; j++){
-		p[j].innerText = "> " + words[i].replaceAt(index, selectedRandomChar);
+	// loop through password and replace one char at a time with a random symbol
+	for (var j = 0; j < password.length; j++){
+		password[j].innerText = "> " + words[index].replaceAt(count, selectedRandomChar);
 	} 
-
-	if (index === 0){
-		analyzeComplexity(words[i]);
+	// limit the following to only update once per password rather than once per char
+	if (count === 0){
+		analyzeComplexity(words[index]);
 		timeToCrack(complexityScore, hashrate);
 		crackTimeDisplay.innerText = crackTime + " seconds";
 		console.log("keyspace: " + keyspace + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " seconds");
 	}
-
-	index++;
+	// used to determine if we've looped through this code before
+	count++;
 	
 	// hacky wait/reset
-	if (index >= words[i].length){
-		index = 0;
-		i++;
+	if (count >= words[index].length){
+		count = 0;
+		index++;
 	}
-
-	if (i >= words.length) {
-		i = 0;
+	// reset index if we've looped through the whole word
+	if (index >= words.length) {
+		index = 0;
 	}
 
 }, 75);
