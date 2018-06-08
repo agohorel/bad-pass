@@ -22,10 +22,10 @@ setInterval(function(){
 	if (index === 0){
 		analyzeComplexity(words[i]);
 		timeToCrack(complexityScore, hashrate);
+		crackTimeDisplay.innerText = crackTime + " seconds";
 		console.log("keyspace: " + keyspace + ". complexity: " + complexityScore + ". time to crack: " + crackTime + " seconds");
 	}
 
-	crackTimeDisplay.innerText = crackTime + " seconds";
 	index++;
 	
 	// hacky wait/reset
