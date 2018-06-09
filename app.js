@@ -30,7 +30,7 @@ setInterval(function(){
 	count++;
 	
 	// hacky wait/reset
-	if (count >= words[index].length){
+	if (count >= words[index].length + 10){
 		count = 0;
 		index++;
 	}
